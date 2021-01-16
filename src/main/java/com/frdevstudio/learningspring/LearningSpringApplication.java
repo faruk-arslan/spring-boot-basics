@@ -2,7 +2,6 @@ package com.frdevstudio.learningspring;
 
 import com.frdevstudio.learningspring.data.entity.Room;
 import com.frdevstudio.learningspring.data.repository.RoomRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +19,12 @@ public class LearningSpringApplication {
 	@RestController
 	@RequestMapping("/rooms")
 	public class RoomController{
-		@Autowired
-		private RoomRepository roomRepository;
+
+		private final RoomRepository roomRepository;
+
+		public RoomController(RoomRepository roomRepository) {
+			this.roomRepository = roomRepository;
+		}
 
 		@GetMapping
 		public Iterable<Room> getRooms(){
