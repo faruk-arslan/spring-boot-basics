@@ -26,6 +26,6 @@ public class RoomReservationWebController {
         Date date=DateUtils.createDateFromDateString(dateString);
         List<RoomReservation> roomReservations=this.reservationService.getRoomReservationForDate(date);
         model.addAttribute("roomReservations", roomReservations);
-        return "roomReservations";
+        return "reservations";
     }
 }
