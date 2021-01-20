@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Guests</title>
 
     <style>
         .starter-template{margin-top: 50px;}
@@ -28,9 +28,22 @@
 <main class="container">
 
     <div class="starter-template text-center py-5 px-3">
-        <h1>WELCOME</h1>
-        <a class="btn btn-light" href="/reservations" role="button">Go to reservations</a>
-        <a class="btn btn-light" href="/guests" role="button">See the guests</a>
+        <h1>Guests</h1>
+
+        <table class="table table-light table-striped">
+            <tr>
+                <td>Last Name</td>
+                <td>First Name</td>
+                <td>Email</td>
+                <td>Phone Number</td>
+            </tr>
+            <tr th:each="guest: ${guests}">
+                <td th:text="${guest.LastName}">Last name</td>
+                <td th:text="${guest.firstName}">First name</td>
+                <td th:text="${guest.emailAddress}">Email address</td>
+                <td th:text="${guest.phoneNumber}">Phone number</td>
+            </tr>
+        </table>
     </div>
 
 </main><!-- /.container -->
